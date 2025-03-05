@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel='icon' href='logo.jpeg'/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prasar - Mass Mailing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1a1a1a, #000000); /* Subtle gradient */
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .top-container {
+            display: flex;
+            justify-content: flex-start;
+            padding: 1.5rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+
+        .founder-box img {
+    max-width: 100px; /* Set a maximum width */
+    max-height: 100px; /* Set a maximum height */
+    width: auto; /* Allow width to adjust */
+    height: auto; /* Allow height to adjust */
+    border-radius: 50%;
+    margin: 0.5rem 0;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.founder-title {
+
+    color: #00ffff; /* Light blue color */
+
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px rgba(0, 255, 255, 0.7); /* Glowing effect */
+
+    animation: glow 1.5s infinite alternate; /* Animation for fluctuating brightness */
+
+    margin-top: 0.5rem; /* Space between name and title */
+
+}
+
+
+@keyframes glow {
+
+    0% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px rgba(0, 255, 255, 0.7); }
+
+    100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px rgba(0, 255, 255, 1); }
+
+}
+        @keyframes glimmer {
+            0% { box-shadow: 0 0 15px 5px rgba(169, 169, 169, 0.5); }
+            100% { box-shadow: 0 0 20px 8px rgba(169, 169, 169, 0.7); }
+        }
+
+        .founder-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0.5rem 0;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.8), rgba(0, 0, 0, 0.8));
+            text-align: center;
+            padding: 8rem 3rem 3rem;
+            margin: -3rem -3rem 3rem;
+            box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8), 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 15px 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8), 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Times New Roman', Times, serif;
+            transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        nav a:hover {
+            color: #00ffff;
+            transform: scale(1.1);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.9);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background: rgba(51, 51, 51, 0.6);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8), 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.5s ease forwards;
+            position: relative; /* Ensure pricing box is visible */
+            z-index: 5; /* Above background elements */
+        }
+
+        #home { animation-delay: 0.1s; }
+        #demo { animation-delay: 0.2s; box-shadow: 0 0 20px 10px rgba(0, 255, 255, 0.8); }
+        #pricing { 
+        box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.9); 
+        animation: pulseGreenGlow 2s infinite alternate, fadeIn 0.5s ease forwards; /* Add fadeIn animation */
+        animation-delay: 0.3s;
+        overflow: hidden; /* Contain money emojis */
+           }
+        #downloads { animation-delay: 0.4s; }
+        #about { animation-delay: 0.5s; box-shadow: 0 0 20px 10px rgba(255, 105, 180, 0.8); }
+        #howto { animation-delay: 0.6s; }
+        #updates { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 3rem;
+            font-family: 'Montserrat', 'Times New Roman', serif;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #ffff00, 0 0 30px #ffeb3b; /* Neon yellow glow */
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            0% { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffff00, 0 0 30px #ffeb3b, 0 0 40px rgba(255, 235, 59, 0.5); }
+            100% { text-shadow: 0 0 15px #ffd700, 0 0 30px #ffff00, 0 0 45px #ffeb3b, 0 0 60px rgba(255, 235, 59, 0.8); }
+        }
+
+        h1:hover { transform: translateY(-3px); }
+
+        h2 {
+            color: #ddd;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', 'Times New Roman', serif;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(0, 255, 255, 0.5);
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        h2:hover { transform: translateY(-3px); }
+
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        p:hover { transform: translateX(5px); }
+
+        .features-content {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .demo-video {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #444444;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px 8px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #555555, #777777);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px 12px rgba(255, 255, 255, 1);
+        }
+
+        .developer-info, .how-to-content, .updates-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        #developer-photo {
+            max-width: 250px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px 8px rgba(255, 105, 180, 0.8);
+        }
+
+        #developer-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px 12px rgba(255, 105, 180, 1);
+        }
+
+        .how-to-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px 8px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .how-to-content img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px 12px rgba(255, 255, 255, 1);
+        }
+
+        footer {
+            background: rgba(51, 51, 51, 0.6);
+            text-align: center;
+            padding: 1.5rem;
+            width: 100%;
+            box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8), 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 3rem;
+        }
+
+        footer p {
+            font-family: 'Times New Roman', Times, serif;
+            transition: transform 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        footer p:hover { transform: scale(1.05); }
+
+        /* Pulsing glow animation for neon green pricing border */
+        @keyframes pulseGreenGlow {
+            0% { box-shadow: 0 0 25px 12px rgba(0, 255, 0, 0.9); }
+            100% { box-shadow: 0 0 30px 15px rgba(0, 255, 0, 1); }
+        }
+
+        /* Floating letter boxes (background) with glow */
+        .letter-box {
+            position: absolute;
+            z-index: -1;
+            font-size: 40px;
+            color: rgba(128, 128, 128, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: floatHorizontal 4s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes floatHorizontal {
+            0% { transform: translateX(-10vw); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(110vw); opacity: 0; }
+        }
+
+        /* Floating money emojis (pricing box only) */
+        .money-emoji {
+            position: absolute;
+            font-size: 30px;
+            color: rgba(0, 255, 0, 0.5);
+            animation: floatMoney 5s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0; /* Behind content */
+        }
+
+        @keyframes floatMoney {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+
+        /* Ensure pricing content is above emojis */
+        #pricing h2, #pricing p {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            main { padding: 1rem; }
+            section { padding: 1.5rem; margin: 0 0 1.5rem; }
+            header { padding: 6rem 1rem 2rem; margin: -1rem -1rem 2rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            p { font-size: 1rem; }
+            .download-btn { display: block; width: 100%; text-align: center; }
+            .developer-info { flex-direction: column; align-items: center; }
+            .demo-video { height: 200px; }
+            .founder-box { width: 150px; }
+            .founder-box img { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-container">
+        <div class="founder-box">
+    <p>Founder:</p>
+    <img src="your-photo.jpg" alt="Founder Photo">
+    <p>Vinayak Singh</p>
+    <p class="founder-title">Founder</p> 
+</div>
+    </div>
+    
+
+    <header>
+        <h1>Prasar</h1>
+        <p>Mass Mailing Solution</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Developer</a>
+        <a href="#howto">How To</a>
+        <a href="https://github.com/username/prasar/releases" target="_blank">Software Updates</a>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Welcome to Prasar</h2>
+            <p>A powerful mass mailing application for your communication needs.</p>
+            <div class="features-content">
+                <p><strong>Fast Delivery:</strong> Send thousands of emails in minutes.</p>
+                <p><strong>Easy Customization:</strong> Design templates with our intuitive editor.</p>
+                <p><strong>Analytics:</strong> Track opens and clicks effortlessly.</p>
+            </div>
+        </section>
+
+        <section id="demo">
+            <h2>Demo Video</h2>
+            <iframe class="demo-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Prasar Demo" allowfullscreen></iframe>
+            <p>Watch this short demo to see Prasar in action!</p>
+        </section>
+
+        <section id="pricing">
+            <h2>Pricing</h2>
+            <p>Prasar is completely <span style="color: #00ff00; text-shadow: 0 0 5px #00ff00;">free</span> to use – no hidden costs, no subscriptions!</p>
+        </section>
+
+        <section id="downloads">
+            <h2>Downloads</h2>
+            <a href="#" class="download-btn">Windows GUI</a>
+            <a href="#" class="download-btn">Windows CLI</a>
+            <a href="#" class="download-btn">Linux GUI</a>
+            <a href="#" class="download-btn">Linux CLI</a>
+        </section>
+
+        <section id="about">
+            <h2>About the Developer</h2>
+            <div class="developer-info">
+                <img src="your-photo.jpg" alt="Developer Photo" id="developer-photo">
+                <p>Insert your bio here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </section>
+
+        <section id="howto">
+            <h2>How To Use Prasar</h2>
+            <div class="how-to-content">
+                <p>Step 1: Download and install the application from the links above.</p>
+                <img src="placeholder-image1.jpg" alt="Installation screenshot">
+                <p>Step 2: Configure your email settings in the application.</p>
+                <img src="placeholder-image2.jpg" alt="Settings screenshot">
+                <p>Step 3: Create your mailing list and start sending!</p>
+            </div>
+        </section>
+
+        <section id="updates">
+            <h2>Software Updates</h2>
+            <div class="updates-content">
+                <p>Version 1.2.0 - March 2025: Added new template editor</p>
+                <p>Version 1.1.0 - January 2025: Improved performance for large mailing lists</p>
+                <p>Version 1.0.0 - December 2024: Initial release</p>
+                <p>Check full release notes on <a href="https://github.com/username/prasar/releases" target="_blank">GitHub</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Prasar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Background floating letter boxes
+        function createLetterBoxes() {
+            const body = document.body;
+            const numRows = 25;
+            const spacing = window.innerHeight / numRows;
+
+            for (let i = 0; i < numRows; i++) {
+                const letterBox = document.createElement('div');
+                letterBox.className = 'letter-box';
+                letterBox.innerHTML = '✉️';
+                letterBox.style.top = (i * spacing) + 'px';
+                letterBox.style.animationDuration = 3 + Math.random() * 2 + 's';
+                letterBox.style.animationDelay = Math.random() * 2 + 's';
+                body.appendChild(letterBox);
+            }
+        }
+
+        // Floating money emojis in pricing box
+        function createMoneyEmojis() {
+            const pricingSection = document.querySelector('#pricing');
+            const numEmojis = 10;
+
+            for (let i = 0; i < numEmojis; i++) {
+                const moneyEmoji = document.createElement('div');
+                moneyEmoji.className = 'money-emoji';
+                moneyEmoji.innerHTML = '💰';
+                moneyEmoji.style.left = Math.random() * 100 + '%';
+                moneyEmoji.style.top = Math.random() * 100 + '%';
+                moneyEmoji.style.animationDuration = 2 + Math.random() * 3 + 's';
+                moneyEmoji.style.animationDelay = Math.random() * 2 + 's';
+                pricingSection.appendChild(moneyEmoji);
+            }
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href');
+                document.querySelector(sectionId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            createLetterBoxes();
+            createMoneyEmojis();
+        });
+    </script>
+</body>
+</html>
